@@ -1,0 +1,15 @@
+{
+  "name": "planning-poker-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dustinyschild/planning-poker-server.git",
+  "author": "Dustin Yelland <dyelland@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "socket.io": "^4.1.3",
+    "uuid": "^8.3.2"
+  }
+}
