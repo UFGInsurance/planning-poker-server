@@ -1,7 +1,10 @@
 # Planning Poker Websocket Design
 
+### Production server is running at ws://ufg-planning-poker.herokuapp.com/planning-poker
+
+
 ### to connect to the server:
-using the socket.io-client library connect to `ws://{host}(tbd)/planning-poker`
+using the socket.io-client library connect to `ws://{host}/planning-poker`
 
 ## Public actions
 - join a room by emitting a `"join"` event with payload
