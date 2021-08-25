@@ -54,11 +54,14 @@ const planningPoker = io.of("/planning-poker");
 planningPoker.on("connection", (socket) => {
   socket.use((packet, next) => {
     const [ event ] = packet;
+
     const room = Object.entries(rooms).find(([roomKey, room]) =>
       room.participants.some(participant => participant.id === socket.id)
     );
 
     if (event !== "join" && room) {
+      next();
+    } else if (event === "join") {
       next();
     } else {
       console.error("Invalid action: user is not in a room.");
