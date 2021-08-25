@@ -175,7 +175,6 @@ planningPoker.on("connection", (socket) => {
     rooms = newRoomsState;
 
     roomsToNotify.forEach((roomKey) => {
-      console.log({rooms});
       planningPoker.in(roomKey).emit("state", rooms[roomKey]?.getState()); // state is a tuple
     });
   });
