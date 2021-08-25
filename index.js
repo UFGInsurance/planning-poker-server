@@ -52,6 +52,19 @@ let rooms = {};
 const planningPoker = io.of("/planning-poker");
 
 planningPoker.on("connection", (socket) => {
+  socket.use((packet, next) => {
+    const [ event ] = packet;
+    const room = Object.entries(rooms).find(([roomKey, room]) =>
+      room.participants.some(participant => participant.id === socket.id)
+    );
+
+    if (event !== "join" && room) {
+      next();
+    } else {
+      console.error("Invalid action: user is not in a room.");
+    }
+  });
+
   socket.on("get_rooms", () => {
     socket.emit("get_rooms", rooms);
   });
@@ -106,12 +119,7 @@ planningPoker.on("connection", (socket) => {
   socket.on("flip_cards", () => {
     const [key, room] = Object.entries(rooms).find(([roomKey, room]) =>
       room.participants.some(participant => participant.id === socket.id)
-    ) || [];
-
-    if (!room) {
-      console.error("Failed to update: user needs to join a room");
-      return;
-    }
+    );
 
     const client = room.participants.find(participant => participant.id === socket.id);
 
