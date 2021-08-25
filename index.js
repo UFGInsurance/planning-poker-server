@@ -5,6 +5,8 @@ const { v4 } = require("uuid");
 const server = http.createServer();
 const io = new Server(server);
 
+const PORT = process.env.PORT || 3000;
+
 class Room {
   constructor({ owner, participants = [], flipped = false }) {
     this.flipped = flipped;
@@ -179,6 +181,6 @@ planningPoker.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("listening on localhost:3001");
+server.listen(PORT, () => {
+  console.log("listening on port " + PORT);
 });
