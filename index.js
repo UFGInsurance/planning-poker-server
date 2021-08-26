@@ -3,7 +3,12 @@ const { Server } = require("socket.io");
 const { v4 } = require("uuid");
 
 const server = http.createServer();
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"]
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 
