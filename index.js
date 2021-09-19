@@ -37,10 +37,15 @@ class Room {
       }
     }
 
+    const participantsWithMask = this.participants.map(participant => ({
+      ...participant,
+      estimate: this.estimate ? "X" : "-"
+    }));
+
     //mask unflipped cards
     return {
       owner: this.owner,
-      participants: this.participants.map(participant => ({...participant, estimate: "X"}))
+      participants: participantsWithMask
     };
   }
 }
