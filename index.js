@@ -39,7 +39,7 @@ class Room {
 
     const participantsWithMask = this.participants.map(participant => ({
       ...participant,
-      estimate: this.estimate ? "X" : "-"
+      estimate: participant.estimate ? "X" : "-"
     }));
 
     //mask unflipped cards
