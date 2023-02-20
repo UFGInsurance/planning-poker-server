@@ -1,5 +1,7 @@
 # Planning Poker Websocket Design
 
+THIS REPO IS OBSOLESCED. IN THE FUTURE, REFER TO https://github.com/UFGInsurance/planning-poker-serverless.
+
 ### Production server is running at ws://ufg-planning-poker.herokuapp.com/planning-poker
 
 
